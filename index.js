@@ -30,11 +30,6 @@ client.on('ready', () =>{
 });
 
 
-if (client.id === '725000309759279105') {
-  return;
-}
-
-
 client.on("message", async message => {
 
   let messageArray = message.content.split(" ")
