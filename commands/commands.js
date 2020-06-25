@@ -1,7 +1,7 @@
 const { Client, Collection, MessageEmbed } = require('discord.js');
 
 module.exports.config = {
-    name: "commands"
+    name: "commands",
     aliases: []
 }
 
