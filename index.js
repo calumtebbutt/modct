@@ -1,9 +1,7 @@
 const { Client, Collection, MessageEmbed } = require('discord.js');
-const token = ('NzI1MDAwMzA5NzU5Mjc5MTA1.XvIYzw.xYF0L_RFihVX6tj5nn62Rv7BYRg')
 const prefix = "!"
 const client = new Client();
 const fs = require('fs');
-const { sendFriendRequest } = require('noblox.js');
 
 client.commands = new Collection()
 client.aliases = new Collection();
@@ -26,7 +24,6 @@ fs.readdir("./commands/", (err, files) => {
 })
 
 
-client.login(token);
 
 client.on('ready', () =>{
     console.log('This bot is online.');
@@ -51,23 +48,4 @@ client.on("message", async message => {
 })
 
 
-
-
-// PREMIUM COMMANDS PULL ---------------------------------------------
-
-fs.readdir("./commands/premium/", (err, files) => {
-  if (err) console.log(err)
-
-  let jsfile = files.filter(f => f.split(".").pop() === 'js')
-  if (jsfile.length <= 0) {
-    return console.log("command files not found.");
-  }
-
-  jsfile.forEach((file, i) => {
-    let pullcmd = require(`./commands/premium/${file}`)
-    client.commands.set(pullcmd.config.name, pullcmd)
-    pullcmd.config.aliases.forEach(alias => {
-      client.aliases.set(alias, pullcmd.config.name)
-    })
-  })
-})
+client.login(process.env.BOT_TOKEN);
