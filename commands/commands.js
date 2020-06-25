@@ -6,6 +6,6 @@ module.exports.config = {
 }
 
 module.exports.run = async (client, message, args) => {
-  message.reply(", check DMs!")
-  message.author.send("\n\n**Commands**\n\n**!commmands** - to view commands\n**!serverinfo** - to view server information\n\n**!kick @user** - to kick a specified member\n\n**!ban @user** - to ban a specified member")
+  message.reply(" check DMs!")
+  message.author.send("\n\n**Commands**\n\n**!commands** - to view commands\n**!serverinfo** - to view server information\n**!kick @user** - to kick a specified member\n**!ban @user** - to ban a specified member")
 }
