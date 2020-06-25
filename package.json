@@ -1,0 +1,23 @@
+{
+  "name": "bean",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CalumT",
+  "license": "ISC",
+  "dependencies": {
+    "ascii-table": "0.0.9",
+    "bad-words": "^3.0.3",
+    "braintree": "^2.23.0",
+    "cron": "^1.8.2",
+    "discord.js": "^12.2.0",
+    "discord.js-commando": "^0.10.0",
+    "ms": "^2.1.2",
+    "noblox.js": "^4.5.6",
+    "node-schedule": "^1.3.2",
+    "sparkbots": "^0.1.0"
+  }
+}

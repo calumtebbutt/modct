@@ -1,0 +1,19 @@
+const { Client, Collection, MessageEmbed, CategoryChannel } = require('discord.js');
+
+module.exports.config = {
+    name: "createwelcome",
+    aliases: []
+}
+
+
+module.exports.run = async (client, message, args) => {
+
+
+    if (message.member.hasPermission('MANAGE_CHANNELS')) {
+        message.guild.channels.create('welcome', {
+            type: 'text',
+        });
+    } else {
+        message.reply(" you do not have correct permissions.")
+    }
+}
