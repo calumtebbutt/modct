@@ -30,7 +30,7 @@ client.on('ready', () =>{
 });
 
 
-if (sendFriendRequest.id === '725000309759279105') {
+if (client.id === '725000309759279105') {
   return;
 }
 
