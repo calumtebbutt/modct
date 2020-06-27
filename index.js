@@ -107,8 +107,8 @@ client.on("messageUpdate", async(oldMessage, newMessage) =>{
   .setThumbnail(oldMessage.author.avatarURL)
   .setColor("#D9E519")
   .setDescription("Edited Message")
-  .addField("Before", oldMessage.content, true)
-  .addField("After", newMessage.content, true)
+  .addField("Before", oldMessage.content)
+  .addField("After", newMessage.content)
   .setTimestamp()
   .setFooter("CTModeration");
 
