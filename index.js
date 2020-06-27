@@ -6,6 +6,13 @@ const fs = require('fs');
 client.commands = new Collection()
 client.aliases = new Collection();
 
+//backcheck
+client.on('message', message => {
+  if(message.author.bot) return;
+})
+
+
+
 // GETS COMMANDS FROM MODERATION FOLDER
 
 fs.readdir("./commands/moderation/", (err, files) => {
