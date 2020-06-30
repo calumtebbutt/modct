@@ -74,10 +74,32 @@ fs.readdir("./commands/creator/", (err, files) => {
 });
 
 
+// GETS COMMANDS FROM helpful FOLDER
+
+fs.readdir("./commands/helpful/", (err, files) => {
+  if (err) console.log(err)
+
+  let jsfile = files.filter(f => f.split(".").pop() === 'js')
+  if (jsfile.length <= 0) {
+    return console.log("helpful files not found.");
+  }
+
+  jsfile.forEach((file, i) => {
+    let pullcmd = require(`./commands/helpful/${file}`)
+    client.commands.set(pullcmd.config.name, pullcmd)
+    pullcmd.config.aliases.forEach(alias => {
+      client.aliases.set(alias, pullcmd.config.name)
+    })
+  })
+});
+
+
+
 
 client.on('ready', () =>{
-    console.log('This bot is online.');
-});
+    let activities = [ `${client.guilds.cache.size} servers!`, `${client.channels.cache.size} channels!`, `${client.users.cache.size} users!` ], i = 0;
+    setInterval(() => client.user.setActivity(`!help | ${activities[i++ % activities.length]}`, { type: "WATCHING" }), 15000)
+})
 
 
 client.on("message", async message => {
