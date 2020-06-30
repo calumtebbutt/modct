@@ -119,46 +119,47 @@ client.on("message", async message => {
 
 // EDITED MESSAGE LOGGING
 
-client.on("messageUpdate", async(oldMessage, newMessage) =>{
-  if(oldMessage.content === newMessage.content){
+client.on("messageUpdate", async (oldMessage, newMessage) => {
+  if (oldMessage.content === newMessage.content) {
     return;
   }
+    let logEmbed = new MessageEmbed()
+      .setAuthor(oldMessage.author.tag, oldMessage.author.avatarURL)
+      .setThumbnail(oldMessage.author.avatarURL)
+      .setColor("#D9E519")
+      .setDescription("Edited Message")
+      .addField("Before", oldMessage.content)
+      .addField("After", newMessage.content)
+      .setTimestamp()
+      .setFooter("CTModeration");
 
-  let logEmbed = new MessageEmbed()
-  .setAuthor(oldMessage.author.tag, oldMessage.author.avatarURL)
-  .setThumbnail(oldMessage.author.avatarURL)
-  .setColor("#D9E519")
-  .setDescription("Edited Message")
-  .addField("Before", oldMessage.content)
-  .addField("After", newMessage.content)
-  .setTimestamp()
-  .setFooter("CTModeration");
+    let loggingChannel = newMessage.guild.channels.cache.find(ch => ch.name === "chat-logs")
+    if (!loggingChannel) return;
 
-  let loggingChannel = newMessage.guild.channels.cache.find(ch => ch.name === "chat-logs")
-  if(!loggingChannel) return;
-
-  loggingChannel.send(logEmbed);
-
+    loggingChannel.send(logEmbed);
 })
 
 
 //LOG DELETED MESSAGES
 
-client.on("messageDelete", async message =>{
+client.on("messageDelete", async message => {
 
-  let deleteEmbed = new MessageEmbed()
-  .setTitle("Deleted Message")
-  .setColor("#FF0000")
-  .setThumbnail(message.avatarURL)
-  .addField("Deleted By:", message.author.tag)
-  .addField("Deleted in:", message.channel.name)
-  .setTimestamp()
-  .setFooter("CTModeration");
 
-  let deleteLog = message.guild.channels.cache.find(c => c.name === "chat-logs")
-  if(!deleteLog) return;
+    let deleteEmbed = new MessageEmbed()
+      .setAuthor(message.author.tag)
+      .setColor("#FF0000")
+      .setDescription("Deleted Message")
+      .setThumbnail(message.avatarURL)
+      .addField("Deleted in:", message.channel.name)
+      .addField("Message:", message.content)
+      .setTimestamp()
+      .setFooter("CTModeration");
 
-  deleteLog.send(deleteEmbed);
+    let deleteLog = message.guild.channels.cache.find(c => c.name === "chat-logs")
+    if (!deleteLog) return;
+
+    deleteLog.send(deleteEmbed);
+  
 })
 
 
