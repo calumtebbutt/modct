@@ -6,14 +6,6 @@ module.exports.config = {
 }
 
 module.exports.run = async (client, message, args) => {
-  const { Client, Collection, MessageEmbed } = require('discord.js');
-
-module.exports.config = {
-    name: "commands",
-    aliases: []
-}
-
-module.exports.run = async (client, message, args) => {
     const commandEmbed = new MessageEmbed()
     .setTitle("CTMod Commands")
     .setDescription("Find a full list of commands here! *Please note some commands require certain permissions to work*")
