@@ -5,13 +5,17 @@ module.exports.config = {
     aliases: []
 }
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
+    let kickmember = message.mentions.members.first()
 
-    var kickEmbed = new MessageEmbed()
-    .setDescription("Kick")
+    let kickEmbed = new MessageEmbed()
+    .setTitle("Kick")
     .setColor("#ee0000")
-    .addField("Kicked by", message.author);
+    .addField("Member Kicked:", `${kickmember.user.username}`)
+    .addField("Kicked by:", message.author)
+    .setTimestamp()
+    .setFooter("CTModeration");
 
 
     if (message.member.hasPermission("KICK_MEMBERS")) {
@@ -44,7 +48,14 @@ module.exports.run = async (bot, message, args) => {
                 await member.kick(reason)
                 await message.channel.send(`👋 ${member} Reason: ${reason}`);
 
+
                 console.log(`${message.author.tag} kicked ${member.user.tag} from '${message.guild.name}' with the reason: '${reason}'.`);
+
+
+                let kickLog = message.guild.channels.cache.find(c => c.name === "chat-logs")
+                if (!kickLog) return;
+
+                kickLog.send(kickEmbed);
 
             }
 
