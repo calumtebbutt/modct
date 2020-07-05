@@ -5,13 +5,17 @@ module.exports.config = {
     aliases: []
 }
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
+    let banmember = message.mentions.members.first()
 
-    var kickEmbed = new MessageEmbed()
-    .setDescription("Ban")
+    let banEmbed = new MessageEmbed()
+    .setTitle("Ban")
     .setColor("#ee0000")
-    .addField("Banned by", message.author);
+    .addField("Member Banned:", `${banmember.user.username}`)
+    .addField("Banned by:", message.author)
+    .setTimestamp()
+    .setFooter("CTModeration");
 
 
     if (message.member.hasPermission("BAN_MEMBERS")) {
@@ -44,7 +48,14 @@ module.exports.run = async (bot, message, args) => {
                 await member.ban(reason)
                 await message.channel.send(`👋 ${member} Reason: ${reason}`);
 
+
                 console.log(`${message.author.tag} banned ${member.user.tag} from '${message.guild.name}' with the reason: '${reason}'.`);
+
+
+                let banLog = message.guild.channels.cache.find(c => c.name === "chat-logs")
+                if (!banLog) return;
+
+                banLog.send(kickEmbed);
 
             }
 
