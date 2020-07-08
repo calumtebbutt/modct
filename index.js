@@ -94,6 +94,26 @@ fs.readdir("./commands/helpful/", (err, files) => {
 });
 
 
+// GETS COMMANDS FROM RATP FOLDER
+
+fs.readdir("./commands/groups/ratp/", (err, files) => {
+  if (err) console.log(err)
+
+  let jsfile = files.filter(f => f.split(".").pop() === 'js')
+  if (jsfile.length <= 0) {
+    return console.log("helpful files not found.");
+  }
+
+  jsfile.forEach((file, i) => {
+    let pullcmd = require(`./commands/groups/ratp/${file}`)
+    client.commands.set(pullcmd.config.name, pullcmd)
+    pullcmd.config.aliases.forEach(alias => {
+      client.aliases.set(alias, pullcmd.config.name)
+    })
+  })
+});
+
+
 
 
 client.on('ready', () =>{
@@ -123,6 +143,9 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
   if (oldMessage.content === newMessage.content) {
     return;
   }
+
+  if(message.author.id === '725000309759279105') return;
+
     let logEmbed = new MessageEmbed()
       .setAuthor(oldMessage.author.tag, oldMessage.author.avatarURL)
       .setThumbnail(oldMessage.author.avatarURL)
@@ -145,6 +168,9 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
 client.on("messageDelete", async message => {
 
 
+  if(message.author.id === '725000309759279105') return;
+
+
     let deleteEmbed = new MessageEmbed()
       .setAuthor(message.author.tag)
       .setColor("#FF0000")
@@ -161,7 +187,6 @@ client.on("messageDelete", async message => {
     deleteLog.send(deleteEmbed);
   
 })
-
 
 
 
