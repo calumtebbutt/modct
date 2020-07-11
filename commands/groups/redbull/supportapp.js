@@ -1,7 +1,7 @@
 const { Client, Collection, MessageEmbed } = require('discord.js');
 
 module.exports.config = {
-    name: "supportapp",
+    name: "pilotapp",
     aliases: []
 }
 
@@ -15,8 +15,9 @@ module.exports.run = async (client, message, args) => {
 
             let announcementchannel = message.guild.channels.cache.find(c => c.name === "team-chat")
             if (!announcementchannel) return;
+            message.delete();
 
-            announcementchannel.send(`${supmember}, Congratulations on passing your application for the Support Team.  We expect you to be as active as the pilots and working hard.\n\nIF YOU APPLIED FOR MEDIA: Every photo you take is to be submitted in #media-submissions for inspection. Keep in mind that photos or videos MUST be 720p or higher quality; it cannot show ANY GUIs, mouse icons or usernames.`);
+            announcementchannel.send(`${supmember}, Hello. I am glad to say you have passed your application and have been entered into the training program. If you didn't already know the training program lasts 4 weeks where you will be constantly evaluated. From the performance and ability we see in the trainings you attend, it will determine your full place on the team.`);
         } else message.reply(", you do not have permission to use this command.")
     } else return;
 }
