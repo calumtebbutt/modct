@@ -115,6 +115,35 @@ fs.readdir("./commands/groups/ratp/", (err, files) => {
 
 
 
+// GETS COMMANDS FROM REDBULL FOLDER
+
+fs.readdir("./commands/groups/redbull/", (err, files) => {
+  if (err) console.log(err)
+
+  let jsfile = files.filter(f => f.split(".").pop() === 'js')
+  if (jsfile.length <= 0) {
+    return console.log("helpful files not found.");
+  }
+
+  jsfile.forEach((file, i) => {
+    let pullcmd = require(`./commands/groups/redbull/${file}`)
+    client.commands.set(pullcmd.config.name, pullcmd)
+    pullcmd.config.aliases.forEach(alias => {
+      client.aliases.set(alias, pullcmd.config.name)
+    })
+  })
+});
+
+
+
+
+
+
+
+
+
+
+
 
 client.on('ready', () =>{
     let activities = [ `${client.guilds.cache.size} servers!`, `${client.channels.cache.size} channels!`, `${client.users.cache.size} users!` ], i = 0;
