@@ -173,7 +173,7 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     return;
   }
 
-  if(message.author.id === '725000309759279105') return;
+  if(!message.author.id === '725000309759279105'){
 
     let logEmbed = new MessageEmbed()
       .setAuthor(oldMessage.author.tag, oldMessage.author.avatarURL)
@@ -189,6 +189,7 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     if (!loggingChannel) return;
 
     loggingChannel.send(logEmbed);
+  } else return;
 })
 
 
@@ -197,7 +198,7 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
 client.on("messageDelete", async message => {
 
 
-  if(message.author.id === '725000309759279105') return;
+  if(!message.author.id === '725000309759279105'){
 
 
     let deleteEmbed = new MessageEmbed()
@@ -214,8 +215,10 @@ client.on("messageDelete", async message => {
     if (!deleteLog) return;
 
     deleteLog.send(deleteEmbed);
+  } else return;
   
 })
+
 
 
 
