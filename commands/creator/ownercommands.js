@@ -7,8 +7,8 @@ module.exports.config = {
 
 module.exports.run = async (client, message, args) => {
     const commandEmbed = new MessageEmbed()
-        .setTitle("CTMod Commands")
-        .setDescription("Find a full list of commands here! *Please note some commands require certain permissions to work*")
+        .setTitle("CTMod - Owner Commands")
+        .setDescription("Owner-Locked Commands")
         .setColor("#09FF00")
         .addField("**!oa #channel <message>**", "Announces a message in a channel")
         .addField("**!oc**", "View Owner Commands")
