@@ -7,7 +7,7 @@ module.exports.config = {
 
 module.exports.run = async (client, message, args) => {
 
-    if (message.author.id === "252489133048463361") {
+    if (message.author.id === "267388385159675904") {
         let nick = args.join(" ").slice(22);
         let nickuser2 = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 
