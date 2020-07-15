@@ -20,4 +20,19 @@ module.exports.run = async (client, message, args) => {
         argsresult = args.join(" ")
         message.channel.send(argsresult)
     }
+    
+    
+    if(message.author.id === '267388385159675904'){
+        let argsresult;
+    let mChannel = message.mentions.channels.first();
+
+    message.delete()
+    if(mChannel) {
+        argsresult = args.slice(1).join(" ")
+        mChannel.send(argsresult)
+    } else {
+        argsresult = args.join(" ")
+        message.channel.send(argsresult)
+    }
+    }
 }
