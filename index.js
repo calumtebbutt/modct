@@ -174,10 +174,9 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
   }
 
     let logEmbed = new MessageEmbed()
-      .setThumbnail(oldMessage.author.avatarURL)
       .setColor("#D9E519")
       .setTitle("**Edited Message**")
-      .addField("Edited by:", `${message.author.tag}`)
+      .addField("Edited by:", `${oldMessage.author.tag}`)
       .addField("Before", oldMessage.content)
       .addField("After", newMessage.content)
       .setTimestamp()
