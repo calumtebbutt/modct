@@ -7,12 +7,12 @@ module.exports.config = {
 
 module.exports.run = async (client, message, args) => {
 
-    let kickmember = message.mentions.members.first()
+    let kickmember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 
     let kickEmbed = new MessageEmbed()
-    .setTitle("Kick")
+    .setTitle("**User Kicked**")
     .setColor("#ee0000")
-    .addField("Member Kicked:", `${kickmember.user.username}`)
+    .addField("User Kicked:", `${kickmember.user.username}`)
     .addField("Kicked by:", message.author)
     .setTimestamp()
     .setFooter("CTModeration");
@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args) => {
 
         else {
 
-            let member = message.mentions.members.first();
+            let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
             let reason = message.content.split(" ").slice(2).join(' ');
 
             if (member.kickable == false) {
