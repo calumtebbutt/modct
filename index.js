@@ -9,7 +9,8 @@ client.aliases = new Collection();
 //backcheck
 client.on('message', message => {
   if(message.author.bot) return;
-})
+
+
 
 
 
@@ -74,6 +75,7 @@ fs.readdir("./commands/creator/", (err, files) => {
 });
 
 
+
 // GETS COMMANDS FROM helpful FOLDER
 
 fs.readdir("./commands/helpful/", (err, files) => {
@@ -115,6 +117,8 @@ fs.readdir("./commands/groups/ratp/", (err, files) => {
 
 
 
+
+
 // GETS COMMANDS FROM REDBULL FOLDER
 
 fs.readdir("./commands/groups/redbull/", (err, files) => {
@@ -134,6 +138,14 @@ fs.readdir("./commands/groups/redbull/", (err, files) => {
   })
 });
 
+
+
+
+
+
+
+
+}) // end of bot
 
 
 
