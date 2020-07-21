@@ -22,4 +22,23 @@ module.exports.run = async (client, message, args) => {
     } else {
         message.reply(" you do not have permission to use this command.")
     }
+
+
+    let slowchan = message.channel.name
+
+   const slowembed = new MessageEmbed()
+  .setTitle("**Slowmode**")
+  .setColor("#ff9900")
+  .addField("User:", `${message.author.tag}`)
+  .addField("Time:", `${args[0]}`)
+  .addField("Channel:", `${slowchan}`)
+  .setTimestamp()
+  .setFooter("CTModeration");
+
+  let slowlog = message.guild.channels.cache.find(c => c.name === "chat-logs")
+  if (!slowlog) return;
+
+  slowlog.send(slowembed);
+
+
 }
