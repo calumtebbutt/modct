@@ -9,7 +9,63 @@ client.aliases = new Collection();
 //backcheck
 client.on('message', message => {
   if(message.author.bot) return;
+
+
+
+// EDITED MESSAGE LOGGING
+
+client.on("messageUpdate", async (oldMessage, newMessage) => {
+  if (oldMessage.content === newMessage.content) {
+    return;
+  }
+
+  if(!message.author.id === '725000309759279105'){
+
+    let logEmbed = new MessageEmbed()
+      .setAuthor(oldMessage.author.tag, oldMessage.author.avatarURL)
+      .setThumbnail(oldMessage.author.avatarURL)
+      .setColor("#D9E519")
+      .setDescription("Edited Message")
+      .addField("Before", oldMessage.content)
+      .addField("After", newMessage.content)
+      .setTimestamp()
+      .setFooter("CTModeration");
+
+    let loggingChannel = newMessage.guild.channels.cache.find(ch => ch.name === "chat-logs")
+    if (!loggingChannel) return;
+
+    loggingChannel.send(logEmbed);
+  } else return;
 })
+
+
+//LOG DELETED MESSAGES
+
+client.on("messageDelete", async message => {
+
+
+  if(!message.author.id === '725000309759279105'){
+
+
+    let deleteEmbed = new MessageEmbed()
+      .setAuthor(message.author.tag)
+      .setColor("#FF0000")
+      .setDescription("Deleted Message")
+      .setThumbnail(message.avatarURL)
+      .addField("Deleted in:", message.channel.name)
+      .addField("Message:", message.content)
+      .setTimestamp()
+      .setFooter("CTModeration");
+
+    let deleteLog = message.guild.channels.cache.find(c => c.name === "chat-logs")
+    if (!deleteLog) return;
+
+    deleteLog.send(deleteEmbed);
+  } else return;
+  
+})
+
+
 
 
 
@@ -74,6 +130,7 @@ fs.readdir("./commands/creator/", (err, files) => {
 });
 
 
+
 // GETS COMMANDS FROM helpful FOLDER
 
 fs.readdir("./commands/helpful/", (err, files) => {
@@ -115,6 +172,8 @@ fs.readdir("./commands/groups/ratp/", (err, files) => {
 
 
 
+
+
 // GETS COMMANDS FROM REDBULL FOLDER
 
 fs.readdir("./commands/groups/redbull/", (err, files) => {
@@ -133,6 +192,18 @@ fs.readdir("./commands/groups/redbull/", (err, files) => {
     })
   })
 });
+
+
+
+
+
+
+
+
+}) // end of bot
+
+
+
 
 
 
@@ -166,58 +237,6 @@ client.on("message", async message => {
 
 
 
-// EDITED MESSAGE LOGGING
-
-client.on("messageUpdate", async (oldMessage, newMessage) => {
-  if (oldMessage.content === newMessage.content) {
-    return;
-  }
-
-  if(!message.author.id === '725000309759279105'){
-
-    let logEmbed = new MessageEmbed()
-      .setAuthor(oldMessage.author.tag, oldMessage.author.avatarURL)
-      .setThumbnail(oldMessage.author.avatarURL)
-      .setColor("#D9E519")
-      .setDescription("Edited Message")
-      .addField("Before", oldMessage.content)
-      .addField("After", newMessage.content)
-      .setTimestamp()
-      .setFooter("CTModeration");
-
-    let loggingChannel = newMessage.guild.channels.cache.find(ch => ch.name === "chat-logs")
-    if (!loggingChannel) return;
-
-    loggingChannel.send(logEmbed);
-  } else return;
-})
-
-
-//LOG DELETED MESSAGES
-
-client.on("messageDelete", async message => {
-
-
-  if(!message.author.id === '725000309759279105'){
-
-
-    let deleteEmbed = new MessageEmbed()
-      .setAuthor(message.author.tag)
-      .setColor("#FF0000")
-      .setDescription("Deleted Message")
-      .setThumbnail(message.avatarURL)
-      .addField("Deleted in:", message.channel.name)
-      .addField("Message:", message.content)
-      .setTimestamp()
-      .setFooter("CTModeration");
-
-    let deleteLog = message.guild.channels.cache.find(c => c.name === "chat-logs")
-    if (!deleteLog) return;
-
-    deleteLog.send(deleteEmbed);
-  } else return;
-  
-})
 
 
 
