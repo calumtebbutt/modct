@@ -6,145 +6,147 @@ const fs = require('fs');
 client.commands = new Collection()
 client.aliases = new Collection();
 
-//backcheck
 client.on('message', message => {
-  if(message.author.bot) return;
+  if (message.author.bot) {
+    return;
+  } else {
 
 
 
 
 
-// GETS COMMANDS FROM MODERATION FOLDER
+    // GETS COMMANDS FROM MODERATION FOLDER
 
-fs.readdir("./commands/moderation/", (err, files) => {
-  if (err) console.log(err)
+    fs.readdir("./commands/moderation/", (err, files) => {
+      if (err) console.log(err)
 
-  let jsfile = files.filter(f => f.split(".").pop() === 'js')
-  if (jsfile.length <= 0) {
-    return console.log("Mod files not found.");
+      let jsfile = files.filter(f => f.split(".").pop() === 'js')
+      if (jsfile.length <= 0) {
+        return console.log("Mod files not found.");
+      }
+
+      jsfile.forEach((file, i) => {
+        let pullcmd = require(`./commands/moderation/${file}`)
+        client.commands.set(pullcmd.config.name, pullcmd)
+        pullcmd.config.aliases.forEach(alias => {
+          client.aliases.set(alias, pullcmd.config.name)
+        })
+      })
+    });
+
+
+    // GETS COMMANDS FROM INFO FOLDER
+
+    fs.readdir("./commands/info/", (err, files) => {
+      if (err) console.log(err)
+
+      let jsfile = files.filter(f => f.split(".").pop() === 'js')
+      if (jsfile.length <= 0) {
+        return console.log("Mod files not found.");
+      }
+
+      jsfile.forEach((file, i) => {
+        let pullcmd = require(`./commands/info/${file}`)
+        client.commands.set(pullcmd.config.name, pullcmd)
+        pullcmd.config.aliases.forEach(alias => {
+          client.aliases.set(alias, pullcmd.config.name)
+        })
+      })
+    });
+
+
+
+    // GETS COMMANDS FROM CREATOR FOLDER
+
+    fs.readdir("./commands/creator/", (err, files) => {
+      if (err) console.log(err)
+
+      let jsfile = files.filter(f => f.split(".").pop() === 'js')
+      if (jsfile.length <= 0) {
+        return console.log("creator files not found.");
+      }
+
+      jsfile.forEach((file, i) => {
+        let pullcmd = require(`./commands/creator/${file}`)
+        client.commands.set(pullcmd.config.name, pullcmd)
+        pullcmd.config.aliases.forEach(alias => {
+          client.aliases.set(alias, pullcmd.config.name)
+        })
+      })
+    });
+
+
+
+    // GETS COMMANDS FROM helpful FOLDER
+
+    fs.readdir("./commands/helpful/", (err, files) => {
+      if (err) console.log(err)
+
+      let jsfile = files.filter(f => f.split(".").pop() === 'js')
+      if (jsfile.length <= 0) {
+        return console.log("helpful files not found.");
+      }
+
+      jsfile.forEach((file, i) => {
+        let pullcmd = require(`./commands/helpful/${file}`)
+        client.commands.set(pullcmd.config.name, pullcmd)
+        pullcmd.config.aliases.forEach(alias => {
+          client.aliases.set(alias, pullcmd.config.name)
+        })
+      })
+    });
+
+
+    // GETS COMMANDS FROM RATP FOLDER
+
+    fs.readdir("./commands/groups/ratp/", (err, files) => {
+      if (err) console.log(err)
+
+      let jsfile = files.filter(f => f.split(".").pop() === 'js')
+      if (jsfile.length <= 0) {
+        return console.log("helpful files not found.");
+      }
+
+      jsfile.forEach((file, i) => {
+        let pullcmd = require(`./commands/groups/ratp/${file}`)
+        client.commands.set(pullcmd.config.name, pullcmd)
+        pullcmd.config.aliases.forEach(alias => {
+          client.aliases.set(alias, pullcmd.config.name)
+        })
+      })
+    });
+
+
+
+
+
+    // GETS COMMANDS FROM REDBULL FOLDER
+
+    fs.readdir("./commands/groups/redbull/", (err, files) => {
+      if (err) console.log(err)
+
+      let jsfile = files.filter(f => f.split(".").pop() === 'js')
+      if (jsfile.length <= 0) {
+        return console.log("helpful files not found.");
+      }
+
+      jsfile.forEach((file, i) => {
+        let pullcmd = require(`./commands/groups/redbull/${file}`)
+        client.commands.set(pullcmd.config.name, pullcmd)
+        pullcmd.config.aliases.forEach(alias => {
+          client.aliases.set(alias, pullcmd.config.name)
+        })
+      })
+    });
+
+
+
+
+
+
+
+
   }
-
-  jsfile.forEach((file, i) => {
-    let pullcmd = require(`./commands/moderation/${file}`)
-    client.commands.set(pullcmd.config.name, pullcmd)
-    pullcmd.config.aliases.forEach(alias => {
-      client.aliases.set(alias, pullcmd.config.name)
-    })
-  })
-});
-
-
-// GETS COMMANDS FROM INFO FOLDER
-
-fs.readdir("./commands/info/", (err, files) => {
-  if (err) console.log(err)
-
-  let jsfile = files.filter(f => f.split(".").pop() === 'js')
-  if (jsfile.length <= 0) {
-    return console.log("Mod files not found.");
-  }
-
-  jsfile.forEach((file, i) => {
-    let pullcmd = require(`./commands/info/${file}`)
-    client.commands.set(pullcmd.config.name, pullcmd)
-    pullcmd.config.aliases.forEach(alias => {
-      client.aliases.set(alias, pullcmd.config.name)
-    })
-  })
-});
-
-
-
-// GETS COMMANDS FROM CREATOR FOLDER
-
-fs.readdir("./commands/creator/", (err, files) => {
-  if (err) console.log(err)
-
-  let jsfile = files.filter(f => f.split(".").pop() === 'js')
-  if (jsfile.length <= 0) {
-    return console.log("creator files not found.");
-  }
-
-  jsfile.forEach((file, i) => {
-    let pullcmd = require(`./commands/creator/${file}`)
-    client.commands.set(pullcmd.config.name, pullcmd)
-    pullcmd.config.aliases.forEach(alias => {
-      client.aliases.set(alias, pullcmd.config.name)
-    })
-  })
-});
-
-
-
-// GETS COMMANDS FROM helpful FOLDER
-
-fs.readdir("./commands/helpful/", (err, files) => {
-  if (err) console.log(err)
-
-  let jsfile = files.filter(f => f.split(".").pop() === 'js')
-  if (jsfile.length <= 0) {
-    return console.log("helpful files not found.");
-  }
-
-  jsfile.forEach((file, i) => {
-    let pullcmd = require(`./commands/helpful/${file}`)
-    client.commands.set(pullcmd.config.name, pullcmd)
-    pullcmd.config.aliases.forEach(alias => {
-      client.aliases.set(alias, pullcmd.config.name)
-    })
-  })
-});
-
-
-// GETS COMMANDS FROM RATP FOLDER
-
-fs.readdir("./commands/groups/ratp/", (err, files) => {
-  if (err) console.log(err)
-
-  let jsfile = files.filter(f => f.split(".").pop() === 'js')
-  if (jsfile.length <= 0) {
-    return console.log("helpful files not found.");
-  }
-
-  jsfile.forEach((file, i) => {
-    let pullcmd = require(`./commands/groups/ratp/${file}`)
-    client.commands.set(pullcmd.config.name, pullcmd)
-    pullcmd.config.aliases.forEach(alias => {
-      client.aliases.set(alias, pullcmd.config.name)
-    })
-  })
-});
-
-
-
-
-
-// GETS COMMANDS FROM REDBULL FOLDER
-
-fs.readdir("./commands/groups/redbull/", (err, files) => {
-  if (err) console.log(err)
-
-  let jsfile = files.filter(f => f.split(".").pop() === 'js')
-  if (jsfile.length <= 0) {
-    return console.log("helpful files not found.");
-  }
-
-  jsfile.forEach((file, i) => {
-    let pullcmd = require(`./commands/groups/redbull/${file}`)
-    client.commands.set(pullcmd.config.name, pullcmd)
-    pullcmd.config.aliases.forEach(alias => {
-      client.aliases.set(alias, pullcmd.config.name)
-    })
-  })
-});
-
-
-
-
-
-
-
-
 }) // end of bot
 
 
