@@ -5,6 +5,6 @@ module.exports.config = {
     aliases: []
 }
 
-module.exports.run = async (bot, message, args) => {
-    message.author.send("**Invite CTMod to your server!**\nLink: http://ctmedia.site/discord-bot/\nDiscord Server: https://discord.gg/V6HGAgB")
+module.exports.run = async (client, message, args) => {
+    message.author.send("**Invite CTMod to your server!**\nLink: https://top.gg/bot/725000309759279105\nDiscord Support Server: https://discord.gg/V6HGAgB")
 }
