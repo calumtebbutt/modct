@@ -25,4 +25,25 @@ module.exports.run = async (client, message, args) => {
     } else {
         message.reply(" you do not have permission to purge.")
     }
+
+
+
+   let purgechannelname = message.channel.name
+
+   const purgeembed = new MessageEmbed()
+  .setTitle("**Slowmode**")
+  .setColor("#ff9900")
+  .addField("User:", `${message.author.tag}`)
+  .addField("No. of Messages:", `${args[0]}`)
+  .addField("Channel:", `${purgechannelname}`)
+  .setTimestamp()
+  .setFooter("CTModeration");
+
+  let purge = message.guild.channels.cache.find(c => c.name === "chat-logs")
+  if (!purge) return;
+
+  purge.send(purgeembed);
+
+
+
 }
