@@ -7,12 +7,12 @@ module.exports.config = {
 
 module.exports.run = async (client, message, args) => {
 
-    let banmember = message.mentions.members.first()
+    let banmember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 
     let banEmbed = new MessageEmbed()
-    .setTitle("Ban")
+    .setTitle("**User Banned**")
     .setColor("#ee0000")
-    .addField("Member Banned:", `${banmember.user.username}`)
+    .addField("User Banned:", `${banmember.user.username}`)
     .addField("Banned by:", message.author)
     .setTimestamp()
     .setFooter("CTModeration");
@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args) => {
 
         else {
 
-            let member = message.mentions.members.first();
+            let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
             let reason = message.content.split(" ").slice(2).join(' ');
 
             if (member.bannable == false) {
