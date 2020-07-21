@@ -173,13 +173,11 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     return;
   }
 
-  if(!message.author.id === '725000309759279105'){
-
     let logEmbed = new MessageEmbed()
-      .setAuthor(oldMessage.author.tag, oldMessage.author.avatarURL)
       .setThumbnail(oldMessage.author.avatarURL)
       .setColor("#D9E519")
-      .setDescription("Edited Message")
+      .setTitle("**Edited Message**")
+      .addField("Edited by:", `${message.author.tag}`)
       .addField("Before", oldMessage.content)
       .addField("After", newMessage.content)
       .setTimestamp()
@@ -189,7 +187,6 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     if (!loggingChannel) return;
 
     loggingChannel.send(logEmbed);
-  } else return;
 })
 
 
@@ -198,14 +195,10 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
 client.on("messageDelete", async message => {
 
 
-  if(!message.author.id === '725000309759279105'){
-
-
     let deleteEmbed = new MessageEmbed()
-      .setAuthor(message.author.tag)
       .setColor("#FF0000")
-      .setDescription("Deleted Message")
-      .setThumbnail(message.avatarURL)
+      .setTitle("**Deleted Message**")
+      .addField("Message from:", `${message.author.tag}`)
       .addField("Deleted in:", message.channel.name)
       .addField("Message:", message.content)
       .setTimestamp()
@@ -215,7 +208,6 @@ client.on("messageDelete", async message => {
     if (!deleteLog) return;
 
     deleteLog.send(deleteEmbed);
-  } else return;
   
 })
 
