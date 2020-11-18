@@ -17,7 +17,6 @@ module.exports.run = async (client, message, args) => {
     .addField("**!ratprules**", "View the group rules")
     .addField("**!ratproutes**", "View a full list of routes")
     .addField("**!ratpoperators**", "View a full list of operators")
-    .addField("**!ratpmeeting**", "View notes on what was said in the weekly meeting")
     .addField("**!ratpfleet**", "View the full RATP Fleet")
     .addField("**!ratpfaq**", "View frequently asked questions")
     .addField("**!ratpcredits**", "View a full list of game credits")
