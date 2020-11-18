@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
 
     const ratpstaffEmbed = new MessageEmbed()
     .setTitle("RATP Dev London - Staff")
-    .setDescription("**HRs**\nreecerod\nBrickBusEllis\nAlexDev_exe\nZainabdriver\nBrettYork\namazingguy377\nDD_Sim\nRebelkopGamer206\nPhotoBlockTrollz\niiDight3r\nFletchyboy100\njojojosh3210\nmax8gaming\nBritishAviator_RBX\nCaidanParker\nTowerGateway\nOptical365\nthemister18\nKacperEpic\nJ_oshJ\nredline_1999\n\n**Engineering Team**Master_GamerMan\nConnorClever\nx3fklazomaniac\nMike_7668\nsenyo44ALT2\n\n**Execs**\nCalumT01 *- Executive Assistant*\nMrTomasboy *- Vice Chairman*\niiReece98 *- Chairman*")
+    .setDescription("**HRs**\nreecerod\nBrickBusEllis\nAlexDev_exe\nH1_Z1z\namazingguy377\nDD_Sim\nRebelkopGamer206\nPhotoBlockTrollz\nFletchyboy100\nmax8gaming\nBritishAviator_RBX\nTowerGateway\nthemister18\nKacperEpic\n\n**Engineering Team**\nx3fklazomaniac\nMike_7668\nsenyo44\nBrian_Sedano\nbossmaneternity\nkyrovia\nTsunamiD\nthegreeknotebook\nMrTomasBoy\nrailwork\nJPYukiRBX\n\n**Execs**\nCalumT01 *- Deputy Chairman*\niiReece98 *- Chairman*")
     .setColor("#24bfab")
     .setFooter("CTModeration - RATP Dev London");
 
