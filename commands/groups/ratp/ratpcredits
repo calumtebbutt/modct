@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
 
     const ratpcreditsEmbed = new MessageEmbed()
     .setTitle("RATP Dev London - L&E V3 Credits")
-    .setDescription("**CalumT01** - Lea Interchange, Stratford Bus Station, Walthamstow Bus Station, Map Scenery, Bridges, Landmark Building, Whipps Cross Hospital, Chingford Mount, Chingford Hatch, Under/Overground Stations\n**BrickBusEllis** - Map Scenery\n**senyo44ALT2** - Map Roads\n**eesa222** - Westfield Scenery, Leyton Garage, Bakers Arms\n**MrTomasboy** - Scripting\n**Mike_7668** - Scripting\n**iiCentrebus** - Route Directions, Bus Stops\n**x3fklazomaniac** - Blender\n**iiReece98** - Project Manager\n**GreekAviator_RBX** - GUIs\n**railwork** - Bus Building\n**redline_1999** - Bus Building")
+    .setDescription("**iiReece98** - Executive Project Manager\n**CalumT01** - Assistant Project Manager (Building)\n**senyo44** - Assistant Project Manager (Roads)\n**x3fklazomaniac** - Development (Building & Blender)\n**railwork** - Bus Development\n**Brian_Sedano** - Development (Scripting)\n**MrBrickbus** - Additional Building (Roads & Scenery)\n**JPYukiRBX** - Development (Scripting & Blender)\n**MrTomasBoy** - Additional Development (Scripting)\n**Mike_7668** - Additional Scripting\n**thegreeknotebook** - Additional Development (GUIs)")
     .setColor("#24bfab")
     .setFooter("CTModeration - RATP Dev London");
 
