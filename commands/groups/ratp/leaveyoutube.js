@@ -19,6 +19,7 @@ module.exports.run = async (client, message, args) => {
 
     if (user.roles.cache.has(youtube)) {
         user.roles.remove(youtube)
+        message.reply(", removed from role.")
     } else return
     message.reply(", you do not have the YouTube role.")
     
