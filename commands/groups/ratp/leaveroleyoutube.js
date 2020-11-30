@@ -9,9 +9,11 @@ module.exports.config = {
 module.exports.run = async (client, message, args) => {
 
     let youtube = message.guild.roles.cache.find(x => x.name === "YouTube"){
-    user.roles.remove(youtube)
+        
+        if (user.roles.cache.has(youtube)) {
+        user.roles.remove(youtube)
+        return message.reply(", you've left the YouTube role.")
+    } else return
     message.reply(" has left the YouTube role.")
-    } else
-    message.reply(", you do not have the YouTube role.")
     
 }
