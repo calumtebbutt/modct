@@ -203,5 +203,30 @@ client.on("messageDelete", async message => {
 
 
 
+// RATP GROUP
+// -- OWNER TAG WARNING
+
+client.on("message", async message => {
+
+  if(message.guild.id === '693509227343249418'){
+
+    if(message.content.includes('@CalumT#6969')) {
+
+      const ownertagembed = new MessageEmbed()
+      .setTitle("Warning")
+      .setDescription("Do not tag CalumT01 or iiReece98 unless urgently necessary - Contact a SHR instead.")
+      .setColor("#e30000")
+      .setFooter("CTModeration - RATP Dev London");
+  
+      message.reply(ownertagembed)
+
+
+  }
+
+  }
+
+})
+
+
 
 client.login(process.env.BOT_TOKEN);
