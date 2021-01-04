@@ -5,22 +5,27 @@ module.exports.config = {
     aliases: []
 }
 
-
 module.exports.run = async (client, message, args) => {
 
-    if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
-        return message.channel.send("I do not have permission to manage roles.");
+
+    if (message.guild.id === '693509227343249418') {
+
+        let youtube = message.guild.roles.cache.get('783061666081275981')
+
+        const member = message.member
+
+
+        if (youtube) {
+            member.roles.remove(youtube)
+            message.reply(' removed role **YouTube**.')
+        }
+
+
+        if (!youtube) {
+            message.reply(' you do not have that role.')
+        }
+
+
     }
-    
-    let user = message.author();
-    
-    let youtube = message.guild.roles.cache.find(x => x.name === "YouTube");
 
-
-    if (user.roles.cache.has(youtube)) {
-        user.roles.remove(youtube)
-        message.reply(", removed from role.")
-    } else return
-    message.reply(", you do not have the YouTube role.")
-    
 }
