@@ -2,7 +2,7 @@
 const { Client, Collection, MessageEmbed } = require('discord.js');
 
 module.exports.config = {
-    name: "ratpyoutubeinformation",
+    name: "ratpyoutubeinfo",
     aliases: []
 }
 
