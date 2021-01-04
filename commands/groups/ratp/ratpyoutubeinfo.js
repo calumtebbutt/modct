@@ -1,14 +1,15 @@
-
 const { Client, Collection, MessageEmbed } = require('discord.js');
 
 module.exports.config = {
-    name: "ratpyoutubeinfo",
+    name: "youtubeinformation",
     aliases: []
 }
 
 
 module.exports.run = async (client, message, args) => {
 
+
+    if (message.author.id === "267388385159675904") {
 
         const youtubeembed = new MessageEmbed()
             .setTitle("**YouTube**")
