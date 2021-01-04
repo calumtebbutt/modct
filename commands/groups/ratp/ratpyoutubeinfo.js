@@ -10,8 +10,6 @@ module.exports.config = {
 module.exports.run = async (client, message, args) => {
 
 
-    if (message.author.id === "267388385159675904") {
-
         const youtubeembed = new MessageEmbed()
             .setTitle("**YouTube**")
             .setColor("#fc0303")
